@@ -2,30 +2,41 @@ import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {Modal, FormControl, Button} from 'native-base';
 import {Input, theme} from 'galio-framework';
-import {useDispatch} from 'react-redux';
-import {addAuditApi, addAuditDetailsApi} from '../redux/actions/audit.action';
+import {useDispatch, useSelector} from 'react-redux';
+import {
+  addAuditApi,
+  addAuditDetailsApi,
+  editDetails,
+  editDetailsApi,
+} from '../redux/actions/audit.action';
 import moment from 'moment';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import {useToast} from 'react-native-toast-notifications';
 const EditTaskModal = ({showModal, closeModal, id_audit}) => {
-  useEffect(() => {
-    console.log('ID ', id_audit);
-  }, []);
   const [desc, setDesc] = useState('');
   const [duree, setDuree] = useState('');
   const [showDate, setShowDate] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date(Date.now()));
   const dispatch = useDispatch();
   const toast = useToast();
+  const {selectedAudit} = useSelector(state => state.audit);
+  useEffect(() => {
+    if (selectedAudit) {
+      setDesc(selectedAudit.description);
+      setSelectedDate(new Date(selectedAudit.date_desc));
+    }
+  }, [selectedAudit]);
   const addNewTask = () => {
     dispatch(
-      addAuditDetailsApi(
+      editDetailsApi(
+        selectedAudit.id_details,
         {
-          id_tache: id_audit,
           description: desc,
           date_desc: moment(selectedDate).format('YYYY-MM-DD'),
+          id_tache: selectedAudit.id_tache,
         },
         toast,
+        selectedAudit.id_tache,
       ),
     );
     setDesc('');

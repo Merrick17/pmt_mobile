@@ -1,4 +1,4 @@
-import {deleteApi, getApi, postApi} from '../../utils/apiHelpers';
+import {deleteApi, getApi, postApi, putApi} from '../../utils/apiHelpers';
 import {
   ADD_AUDIT_TASK,
   GET_AUDIT_DETAILS_ACTION,
@@ -38,6 +38,24 @@ export const getAuditDetailsApi = id => async dispatch => {
     });
   } catch (error) {}
 };
+
+export const editDetailsApi = (id, data, toast, audit) => async dispatch => {
+  try {
+    let result = await putApi('tasks/details/edit/' + id, data, toast);
+    console.log('Edit', result);
+    if (result) {
+      toast.show('Votre  Audit à été Modifier', {
+        type: 'success',
+        placement: 'bottom',
+        duration: 4000,
+        offset: 30,
+        animationType: 'zoom-in',
+      });
+      dispatch(getAuditListApi());
+      dispatch(getAuditDetailsApi(audit));
+    }
+  } catch (error) {}
+};
 export const addAuditApi = (data, toast) => async dispatch => {
   try {
     let result = await postApi('tasks/add', data);
@@ -72,7 +90,6 @@ export const addAuditDetailsApi = (data, toast) => async dispatch => {
 export const deleteDetailsApi =
   (id_details, id_audit, toast) => async dispatch => {
     try {
-     
       let result = await deleteApi('tasks/details/delete/' + id_details);
       toast.show('La tache à été supprimer', {
         type: 'success',

@@ -44,15 +44,16 @@ const LoginScreen = ({navigation}) => {
   };
   return (
     <SafeAreaView style={globalStyles.container}>
-      <Image
-        source={require('../assets/logo.png')}
-        style={styles.companyLogo}
-      />
       <Spinner
         visible={loading}
         textContent={'Veuillez Patienter..'}
         textStyle={styles.spinnerTextStyle}
       />
+      <Image
+        source={require('../assets/logo.png')}
+        style={styles.companyLogo}
+      />
+
       <Center mt={3} style={styles.inputContainer}>
         <Box alignItems="center">
           <Controller
