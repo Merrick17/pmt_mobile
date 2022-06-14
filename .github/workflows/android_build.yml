@@ -50,8 +50,8 @@ jobs:
       - name: upload artifact to Firebase App Distribution
         uses: actions/upload-artifact@v1
         with:
+          name: mind-exploring
           appId: ${{secrets.ANDROID_FIREBASE_APP_ID}}
           token: ${{secrets.ANDROID_FIREBASE_TOKEN}}
           groups: testers
           path: android/app/build/outputs/apk/release/
-
