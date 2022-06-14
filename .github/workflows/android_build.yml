@@ -1,8 +1,9 @@
 name: Android Build ## name of the workflow
 on:
-  workflow_dispatch: # To trigger manual build
-  release:
-    types: [published] # only run the workflow when a new release has been published
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 jobs:
   android-build:
     name: Android Build
@@ -53,5 +54,5 @@ jobs:
           name: mind-exploring
           appId: ${{secrets.ANDROID_FIREBASE_APP_ID}}
           token: ${{secrets.ANDROID_FIREBASE_TOKEN}}
-          groups: testers
+          groups: test-pmt
           file: android/app/build/outputs/apk/release/app-release.apk
