@@ -146,7 +146,6 @@ const DetailQrQC = ({navigation, route}) => {
             details.cause &&
             details.cause.length != 0 &&
             details.cause.map((elm, ind) => {
-              console.log('ELM', elm);
               return (
                 <>
                   <View
