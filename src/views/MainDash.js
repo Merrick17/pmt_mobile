@@ -1,8 +1,10 @@
-import {StyleSheet, Text, View, ScrollView} from 'react-native';
+import {StyleSheet, Text, View, ScrollView, Dimensions} from 'react-native';
 import React, {useEffect} from 'react';
 import {globalStyles} from '../styles/globalStyles';
 import MainComp from '../components/MainComp';
 import {useSelector} from 'react-redux';
+import {Fab, Icon} from 'native-base';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import messaging from '@react-native-firebase/messaging';
 import {ALERT_TYPE, Dialog, Root, Toast} from 'react-native-alert-notification';
 const MainDash = ({navigation}) => {
@@ -82,6 +84,18 @@ const MainDash = ({navigation}) => {
           />
         )}
       </ScrollView>
+      <Fab
+        onPress={() => {
+          navigation.replace('Login');
+        }}
+        backgroundColor="#F97316"
+        renderInPortal={true}
+        shadow={2}
+        bottom={50}
+        placement="bottom-left"
+        size="sm"
+        icon={<Icon color="white" as={AntDesign} name="logout" size="8" />}
+      />
     </View>
   );
 };

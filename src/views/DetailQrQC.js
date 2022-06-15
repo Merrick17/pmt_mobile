@@ -140,66 +140,53 @@ const DetailQrQC = ({navigation, route}) => {
             </Text>
           </View>
         </View>
-        <View style={styles.problem}>
+        <ScrollView style={styles.problem} nestedScrollEnabled>
           <Text style={styles.labelStyle}>Cause</Text>
-          <View
-            style={{
-              width: '100%',
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              marginBottom: 10,
-            }}>
-            <Text style={styles.label}>
-              {details &&
-                details.cause.length != 0 &&
-                details.cause &&
-                details.cause[0].desc_cause}
-            </Text>
-          </View>
-          <View
-            style={{
-              width: '100%',
-              flexDirection: 'column',
-              justifyContent: 'space-evenly',
-              marginBottom: 10,
-            }}>
-            <Text style={styles.label}>
-              -{' '}
-              {details &&
-                details.cause.length != 0 &&
-                details.cause &&
-                details.cause[0].rep_1}
-            </Text>
-            <Text style={styles.label}>
-              -{' '}
-              {details &&
-                details.cause.length != 0 &&
-                details.cause[0].rep_1 &&
-                details.cause[0].rep_2}
-            </Text>
-            <Text style={styles.label}>
-              -{' '}
-              {details &&
-                details.cause.length != 0 &&
-                details.cause[0].rep_1 &&
-                details.cause[0].rep_3}
-            </Text>
-            <Text style={styles.label}>
-              -{' '}
-              {details &&
-                details.cause.length != 0 &&
-                details.cause[0].rep_1 &&
-                details.cause[0].rep_4}
-            </Text>
-            <Text style={styles.label}>
-              -{' '}
-              {details &&
-                details.cause.length != 0 &&
-                details.cause[0].rep_1 &&
-                details.cause[0].rep_5}
-            </Text>
-          </View>
-        </View>
+          {details &&
+            details.cause &&
+            details.cause.length != 0 &&
+            details.cause.map((elm, ind) => {
+              console.log('ELM', elm);
+              return (
+                <>
+                  <View
+                    style={{
+                      width: '100%',
+                      flexDirection: 'row',
+                      justifyContent: 'space-between',
+                      marginBottom: 10,
+                    }}>
+                    <Text style={styles.label}>
+                      N°:{ind + 1}: {elm.desc_cause}
+                    </Text>
+                  </View>
+                  <View
+                    style={{
+                      width: '100%',
+                      flexDirection: 'column',
+                      justifyContent: 'space-evenly',
+                      marginBottom: 10,
+                    }}>
+                    <Text style={styles.label}>
+                      - {elm && elm.rep_1 && elm.rep_1}
+                    </Text>
+                    <Text style={styles.label}>
+                      - {elm && elm.rep_2 && elm.rep_2}
+                    </Text>
+                    <Text style={styles.label}>
+                      - {elm && elm.rep_3 && elm.rep_3}
+                    </Text>
+                    <Text style={styles.label}>
+                      - {elm && elm.rep_4 && elm.rep_4}
+                    </Text>
+                    <Text style={styles.label}>
+                      - {elm && elm.rep_5 && elm.rep_5}
+                    </Text>
+                  </View>
+                </>
+              );
+            })}
+        </ScrollView>
         <ScrollView style={styles.actionDisplay} nestedScrollEnabled>
           <Text style={styles.labelStyle}>Action</Text>
           {details &&

@@ -54,7 +54,7 @@ const AddNewAction = ({navigation, route}) => {
   };
 
   return (
-    <View style={globalStyles.container}>
+    <ScrollView contentContainerStyle={globalStyles.container}>
       <View style={styles.header}>
         <Text style={styles.label}>Action de correction</Text>
       </View>
@@ -287,7 +287,7 @@ const AddNewAction = ({navigation, route}) => {
           </Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
