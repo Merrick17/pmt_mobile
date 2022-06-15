@@ -5,12 +5,14 @@ import moment from 'moment';
 import {ScrollView, Fab, Icon} from 'native-base';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import ActionComp from '../components/ActionComp';
+import {useIsFocused} from '@react-navigation/native';
 const DetailQrQC = ({navigation, route}) => {
+  const isFocused = useIsFocused();
   const [details, setDetails] = useState(null);
   useEffect(() => {
     console.log('Route', route.params.model);
     setDetails(route.params.model);
-  }, []);
+  }, [isFocused]);
   return (
     <View style={globalStyles.container}>
       <View style={styles.header}>
@@ -36,7 +38,7 @@ const DetailQrQC = ({navigation, route}) => {
         <TouchableOpacity
           style={styles.styleBtn}
           onPress={() => {
-            navigation.navigate('Reason', {prev: 'Details'});
+            navigation.navigate('SecondReason', {prev: 'Details'});
           }}>
           <Text style={styles.headerLabel}>Ajouter Cause</Text>
         </TouchableOpacity>

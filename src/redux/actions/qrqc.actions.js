@@ -39,7 +39,7 @@ export const addNewReasonApi = (body, navigation, prev) => async dispatch => {
   try {
     let result = await postApi('qrqc/cause/add', body);
     if (result) {
-      if (prev) {
+      if (prev == true) {
         navigation.pop();
       } else {
         navigation.navigate('Action');
@@ -73,7 +73,7 @@ export const addNewActionApi = (body, toast) => async dispatch => {
 export const deleteQrQcApi = id => async dispatch => {
   try {
     let result = await deleteApi('qrqc/' + id);
-    if (result.success) {
+    if (result) {
       dispatch(getAllQrQcApi());
     }
   } catch (error) {}

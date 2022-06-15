@@ -6,6 +6,13 @@ import {deleteObjectifApi} from '../redux/actions/objectif.actions';
 
 const ObjectifComp = ({item, handleEdit}) => {
   const dispatch = useDispatch();
+  const displayName = type => {
+    if (type == 'REBUT') {
+      return 'Taux Rebut';
+    } else {
+      return 'Taux Rendement Synthetique';
+    }
+  };
   return (
     <View style={styles.container}>
       <View>
@@ -13,7 +20,7 @@ const ObjectifComp = ({item, handleEdit}) => {
           Machine: {item && item.Machine} / Objectif: {item && item.pourcentage}{' '}
         </Text>
         <Text style={styles.label}>Responsable: {item && item.resp}</Text>
-        <Text style={styles.label}>Type: {item && item.type}</Text>
+        <Text style={styles.label}>Type: {item && displayName(item.TYPE)}</Text>
       </View>
       <View style={styles.btnContainer}>
         <View

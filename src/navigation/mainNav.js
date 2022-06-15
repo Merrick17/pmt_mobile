@@ -16,7 +16,7 @@ import Audit from '../views/Audit';
 import DetailsAudit from '../views/DetailsAudit';
 import Profile from '../views/Profile';
 import AdminSettings from '../views/AdminSettings';
-
+import SecondReasonScreen from '../views/SecondReasonScreen';
 const Stack = createNativeStackNavigator();
 const MainNav = () => {
   return (
@@ -32,6 +32,7 @@ const MainNav = () => {
       <Stack.Screen name="Details" component={DetailQrQC} />
       <Stack.Screen name="AddNew" component={AddNewQRQC} />
       <Stack.Screen name="Reason" component={ReasonScreen} />
+      <Stack.Screen name="SecondReason" component={SecondReasonScreen} />
       <Stack.Screen name="Action" component={AddNewAction} />
       <Stack.Screen name="Audit" component={Audit} />
       <Stack.Screen name="DetailsAudit" component={DetailsAudit} />

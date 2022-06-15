@@ -31,7 +31,7 @@ const AddObjectifModal = ({showModal, closeModal, id_audit}) => {
         Machine: poste,
         Matricule_responsable: resp,
         pourcentage: Number(desc),
-        type: type,
+        TYPE: type,
       }),
     );
     setDesc('');
@@ -137,7 +137,7 @@ const AddObjectifModal = ({showModal, closeModal, id_audit}) => {
                   label={'Taux Rendement Synthetique'}
                   value={'TRS'}
                 />
-                <Select.Item label={'Taux Rebut '} value={'REBUT'} />
+                <Select.Item label={'Taux Rebut '} value={'REBU'} />
               </Select>
             </FormControl>
           </Modal.Body>

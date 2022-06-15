@@ -16,6 +16,7 @@ export const addObjectifApi = data => async dispatch => {
 export const EditObjectifApi = (data, id) => async dispatch => {
   try {
     let result = await putApi('objectif/update/' + id, data);
+    console.log('Update', result);
     if (result) {
       dispatch(getObjectifApi());
     }

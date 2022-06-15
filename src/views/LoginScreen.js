@@ -72,6 +72,7 @@ const LoginScreen = ({navigation}) => {
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
+                testID="matricule"
               />
             )}
             name="matricule"
@@ -100,6 +101,7 @@ const LoginScreen = ({navigation}) => {
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
+                testID="password"
               />
             )}
             name="password"
@@ -112,6 +114,7 @@ const LoginScreen = ({navigation}) => {
         </Box>
         <Box alignItems={'center'} marginTop={5}>
           <Button
+            testID="login-btn"
             color="warning"
             round
             onPress={handleSubmit(onSubmit)}

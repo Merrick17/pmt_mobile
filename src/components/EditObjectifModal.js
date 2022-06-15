@@ -33,7 +33,7 @@ const EditObjectifModal = ({showModal, closeModal, id_audit}) => {
           Machine: poste,
           Matricule_responsable: resp,
           pourcentage: Number(desc),
-          type: type,
+          TYPE: type,
         },
         selectedObjectif.id_objectif,
       ),

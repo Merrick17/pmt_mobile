@@ -10,7 +10,9 @@
     "test": "jest",
     "lint": "eslint .",
     "np": "np --no-publish",
-    "postversion": "react-native-version"
+    "postversion": "react-native-version",
+    "build:android-debug": "detox build --configuration android.emu.debug",
+    "test:android-debug": "detox test --configuration android.emu.debug"
   },
   "repository": {
     "type": "git",
@@ -58,9 +60,13 @@
     "@babel/core": "^7.12.9",
     "@babel/runtime": "^7.12.5",
     "@react-native-community/eslint-config": "^2.0.0",
+    "@testing-library/jest-native": "^4.0.5",
+    "@testing-library/react-native": "^9.1.0",
     "babel-jest": "^26.6.3",
+    "detox": "^19.7.1",
     "eslint": "7.14.0",
     "jest": "^26.6.3",
+    "jest-circus": "^28.1.1",
     "metro-react-native-babel-preset": "^0.64.0",
     "np": "^7.6.1",
     "react-native-version": "^4.0.0",
@@ -68,11 +74,18 @@
   },
   "jest": {
     "preset": "react-native",
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-native/extend-expect"
+    ],
     "setupFiles": [
       "./jest/setup.js"
     ],
     "transformIgnorePatterns": [
-      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|@react-native-firebase/messaging/)"
+      "node_modules/(?!(jest-)?@?react-native|@react-native-community|@react-navigation)",
+      "node_modules/(?!(@react-native|react-native)/)",
+      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|@react-native-firebase/messaging/)",
+      "node_modules/(?!(jest-)?react-native|@?react-navigation)",
+      "/node_modules/(?!(@react-native|react-native)/).*/"
     ]
   }
 }
